@@ -36,3 +36,20 @@ resource "google_compute_instance" "pi-hole" {
 
   allow_stopping_for_update = true
 }
+
+resource "google_compute_firewall" "allow_dns" {
+  name    = "allow-dns"
+  network = "pi-hole"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["53"]
+  }
+
+  allow {
+    protocol = "udp"
+    ports    = ["53"]
+  }
+
+  source_ranges = ["123.123.123.123/32"]
+}
