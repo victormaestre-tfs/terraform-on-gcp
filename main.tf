@@ -16,7 +16,7 @@ data "google_compute_image" "ubuntu" {
   family      = "ubuntu-minimal-2404-lts-amd64"
 }
 
-resource "google_compute_instance" "pi-hole" {
+/*resource "google_compute_instance" "pi-hole" {
   name         = "pi-hole"
   machine_type = "e2-micro"
   
@@ -36,7 +36,7 @@ resource "google_compute_instance" "pi-hole" {
 
   allow_stopping_for_update = true
 }
-
+*/
 resource "google_compute_firewall" "allow_dns_terraform" {
   name    = "allow-dns-terraform"
   network = google_compute_network.pi-hole.name
