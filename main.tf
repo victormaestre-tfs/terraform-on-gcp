@@ -1,7 +1,7 @@
 data "google_compute_image" "ubuntu" {
   most_recent = true
   project     = "ubuntu-os-cloud" 
-  family      = "ubuntu-minimal-2404-noble-amd64"
+  family      = "ubuntu-minimal-2404-lts"
 }
 
 resource "google_compute_instance" "web" {
