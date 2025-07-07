@@ -26,10 +26,13 @@ resource "google_compute_instance" "pi-hole" {
       size = 30
     }
   }
+
   network_interface {
     subnetwork = "pi-hole"
     access_config {
       # Leave empty for dynamic public IP
     }
   }
+
+  allow_stopping_for_update = true
 }
