@@ -38,8 +38,8 @@ resource "google_compute_instance" "pi-hole" {
 }
 
 resource "google_compute_firewall" "allow_dns" {
-  name    = "allow-dns"
-  network = "pi-hole"
+  name    = "allow-dns"
+  network = google_compute_network.pi-hole.name
 
   allow {
     protocol = "tcp"
