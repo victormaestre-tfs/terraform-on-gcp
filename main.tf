@@ -13,11 +13,10 @@ resource "google_compute_instance" "pi-hole" {
       image = data.google_compute_image.ubuntu.self_link
     }
   }
-}
-
-network_interface {
-   subnetwork = "default"
-   access_config {
+  network_interface {
+    subnetwork = "default"
+    access_config {
       # Leave empty for dynamic public IP
     }
+  }
 }
