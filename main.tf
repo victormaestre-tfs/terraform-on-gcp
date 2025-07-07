@@ -38,18 +38,19 @@ resource "google_compute_instance" "pi-hole" {
 }
 
 resource "google_compute_firewall" "allow_dns_terraform" {
-  name    = "allow-dns-terraform"
-  network = google_compute_network.pi-hole.name
+  name    = "allow-dns-terraform"
+  network = google_compute_network.pi-hole.name
 
-  allow {
-    protocol = "tcp"
-    ports    = ["53"]
-  }
+  allow {
+    protocol = "tcp"
+    ports    = ["53"]
+  }
 
-  allow {
-    protocol = "udp"
-    ports    = ["53"]
-  }
+  allow {
+    protocol = "udp"
+    ports    = ["53"]
+  }
 
-  source_ranges = ["123.123.123.123/32"]
+  source_ranges = ["123.123.123.123/32"]
 }
+
