@@ -1,3 +1,15 @@
+resource "google_compute_network" "pi-hole" {
+  name                    = "pi-hole"
+  auto_create_subnetworks = false
+}
+
+resource "google_compute_subnetwork" "pi-hole" {
+  name          = "pi-hole"
+  ip_cidr_range = "10.2.0.0/16"
+  region        = "us-east1"
+  network       = google_compute_network.pi-hole.id
+}
+
 data "google_compute_image" "ubuntu" {
   most_recent = true
   project     = "ubuntu-os-cloud" 
@@ -15,7 +27,7 @@ resource "google_compute_instance" "pi-hole" {
     }
   }
   network_interface {
-    subnetwork = "default"
+    subnetwork = "pi-hole"
     access_config {
       # Leave empty for dynamic public IP
     }
