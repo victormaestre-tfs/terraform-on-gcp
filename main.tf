@@ -37,8 +37,8 @@ resource "google_compute_instance" "pi-hole" {
   allow_stopping_for_update = true
 }
 
-resource "google_compute_firewall" "allow_dns" {
-  name    = "allow-dns"
+resource "google_compute_firewall" "allow_dns_terraform" {
+  name    = "allow-dns-terraform"
   network = google_compute_network.pi-hole.name
 
   allow {
